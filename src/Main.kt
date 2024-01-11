@@ -6,9 +6,8 @@
  *
  * @return Int - número entero válido dentro del rango especificado
  */
-fun pedirNum(): Int {
-    val min = 1
-    val max = 100
+fun pedirNum(min: Int, max:Int): Int {
+
     while (true) {
         try {
             print("Introduce un número entre 1 y 100: ")
@@ -34,15 +33,15 @@ fun pedirNum(): Int {
  *
  * @return Boolean - true/false dependiendo de la respuesta válida a la pregunta
  */
-fun pregunta(): Boolean {
+fun pregunta(text: String): Boolean {
     while (true){
-        print("¿Desea generar otra tabla de multiplicación? (s/n)")
-        val text = readln()
-        if (text != "s" && text != "n"){
+        print(text)
+        val siono = readln()
+        if (siono != "s" && siono != "n"){
             print("**Respuesta no válida** (pulse Enter para continuar...)")
             readln()
         } else {
-            return text == "s"
+            return siono == "s"
         }
     }
 }
@@ -57,9 +56,12 @@ fun tablas(num:Int){
 fun main() {
     //TODO: Solicitar la introducción de un número entre 1 y 100 y mostrar su table de multiplicar...
     //Hasta que se responda negativamente a la pregunta "¿Desea generar otra tabla de multiplicación? (s/n)"
-
+    val text = "¿Desea generar otra tabla de multiplicación? (s/n)"
+    val min = 1
+    val max = 100
     do {
-        val num = pedirNum()
+        val num = pedirNum(min, max)
         tablas(num)
-    } while (pregunta())
+    } while (pregunta(text))
+
 }
