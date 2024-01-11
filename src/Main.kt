@@ -9,15 +9,23 @@
 fun pedirNum(): Int {
     val min = 1
     val max = 100
-    print("Introduce un número entre 1 y 100: ")
-    var num = readln()!!.toInt()
-    while ((max < num) || (num < min)){
-        print("**Error** Número no válido (pulse Enter para continuar...)")
-        readln()
-        print("Introduce un número entre 1 y 100: ")
-        num = readln()!!.toInt()
+    while (true) {
+        try {
+            print("Introduce un número entre 1 y 100: ")
+            val num = readln().toInt()
+            if (num in min..max) {
+                return num
+
+            } else {
+                print("**Error** Número no válido (pulse Enter para continuar...)")
+                readln()
+            }
+        } catch (e: NumberFormatException){
+            print("**Error** Número no válido (pulse Enter para continuar...)")
+            readln()
+        }
+
     }
-    return num
 }
 /**
  * Realiza una pregunta para contestar con s/si ó n/no
@@ -32,7 +40,7 @@ fun pregunta(): Boolean {
         val siono = readln()
         if (siono != "s" && siono != "n"){
             print("**Respuesta no válida** (pulse Enter para continuar...)")
-            readLine()
+            readln()
         } else {
             return siono == "s"
         }
