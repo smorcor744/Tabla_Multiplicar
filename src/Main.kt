@@ -37,12 +37,12 @@ fun pedirNum(): Int {
 fun pregunta(): Boolean {
     while (true){
         print("¿Desea generar otra tabla de multiplicación? (s/n)")
-        val siono = readln()
-        if (siono != "s" && siono != "n"){
+        val text = readln()
+        if (text != "s" && text != "n"){
             print("**Respuesta no válida** (pulse Enter para continuar...)")
             readln()
         } else {
-            return siono == "s"
+            return text == "s"
         }
     }
 }
